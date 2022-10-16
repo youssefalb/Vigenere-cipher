@@ -55,7 +55,7 @@ public class VigenereCipherView {
      */
     public String getMessageFromUser() {
         sc= new Scanner(System.in); 
-        System.out.println("Enter the string: ");
+        System.out.print("Enter the string: ");
         String message = sc.nextLine();
         return message;
     }

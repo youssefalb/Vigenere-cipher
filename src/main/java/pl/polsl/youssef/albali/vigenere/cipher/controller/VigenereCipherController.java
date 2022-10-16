@@ -4,7 +4,8 @@
  */
 package pl.polsl.youssef.albali.vigenere.cipher.controller;
 import pl.polsl.youssef.albali.vigenere.cipher.view.VigenereCipherView;
-import pl.polsl.youssef.albali.vigenere.cipher.model.VigenereCipherModel;
+import pl.polsl.youssef.albali.vigenere.cipher.model.*;
+
 
 
 
@@ -30,7 +31,13 @@ public class VigenereCipherController {
      * @param args command line parameters used to display the encryption and decryption examples
      * @throws Exception When the option is invalid or text contains letters outside of the English alphabet
      */
-    public static void main(String[] args) throws Exception{
+    /**
+     * Prints the tutorial and calls the function to be performed based on the user's choice
+     * @param args command line parameters used to display the encryption and decryption examples
+     * @throws InvalidOptionException When the option is invalid or text contains letters outside of the English alphabet
+     * @throws InvalidCharacterException when the text contains letters outside of the English alphabet
+     */
+    public static void main(String[] args) throws InvalidOptionException , InvalidCharacterException{
         VigenereCipherController vigenereCipherController = new VigenereCipherController();
         vigenereCipherController.vigenereCipherView = new VigenereCipherView();
         vigenereCipherController.vigenereCipherModel = new VigenereCipherModel(args[2]);
@@ -42,16 +49,17 @@ public class VigenereCipherController {
                   vigenereCipherController.getOption();
                   break;
             }
-            catch(Exception e){
+            catch(InvalidOptionException | InvalidCharacterException e){
                 vigenereCipherController.vigenereCipherView.printError( e.getMessage());
             }  
         }
     }
     /**
      * Gets the user option (Encryption/Decryption)
-     * @throws Exception when the user enters an invalid option
+     * @throws InvalidOptionException When the option is invalid or text contains letters outside of the English alphabet
+     * @throws InvalidCharacterException when the text contains letters outside of the English alphabet
      */
-    private void getOption()throws Exception{
+    private void getOption()throws InvalidOptionException , InvalidCharacterException{
         String choice = vigenereCipherView.getChoiceFromUser();
         switch (choice) {
             case "1" -> encryptMessage();
@@ -61,19 +69,20 @@ public class VigenereCipherController {
     }
     /**
      * Gets inputs(message and keyword) from the view and calls the encryption method of the Model
-     * @throws Exception when the message contains letters outside of the English alphabet
+     * @throws InvalidCharacterException when the message contains letters outside of the English alphabet
      */
-    private void encryptMessage() throws Exception {
+    private void encryptMessage() throws InvalidCharacterException {
         String keyword = vigenereCipherView.getKeyFromUser();
         String message = vigenereCipherView.getMessageFromUser();
         vigenereCipherModel = new VigenereCipherModel(keyword);
         vigenereCipherView.outputResult(vigenereCipherModel.getEncryptedMessage(message));
     }
-    /**
-     * Gets inputs(cipher text and keyword) from the view and calls the decryption method of the Model
-     * @throws Exception When the cipher text contains letters outside of the English alphabet
-     */
-    private void decryptMessage()throws Exception{
+     
+   /**
+    * Gets inputs(cipher text and keyword) from the view and calls the decryption method of the Model
+    * @throws InvalidCharacterException hen the cipher text contains letters outside of the English alphabet
+    */
+    private void decryptMessage()throws InvalidCharacterException{
         String keyword = vigenereCipherView.getKeyFromUser();
         String cipher = vigenereCipherView.getCipherFromUser();
         vigenereCipherModel = new VigenereCipherModel(keyword);

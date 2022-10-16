@@ -87,29 +87,6 @@ public class VigenereCipherModel {
     }
  
 }
-/**
- * Exception class for objects thrown when the text contains a character outside of English letters 
- * @author youssef albali
- * @version 1.0
- */
-class InvalidCharacterException extends Exception {
-    /**
-     * Non-parameter constructor
-     */
-    public InvalidCharacterException() {
-    }
-
-    /**
-     * Exception class constructor
-     *
-     * @param message display message
-     */
-    
-    public InvalidCharacterException(String message) {
-        super(message);
-    }
-    
-}
 
 
 
