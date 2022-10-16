@@ -26,23 +26,17 @@ public class VigenereCipherController {
      * Model instance used for encrypting and decrypting
      */
     private VigenereCipherModel vigenereCipherModel;
+
     /**
-     * Prints the tutorial and calls the function to be performed based on the user's choice
+     * Calls a controller function to make the tutorial and also calls the function to be performed based on the user's choice
      * @param args command line parameters used to display the encryption and decryption examples
-     * @throws Exception When the option is invalid or text contains letters outside of the English alphabet
      */
-    /**
-     * Prints the tutorial and calls the function to be performed based on the user's choice
-     * @param args command line parameters used to display the encryption and decryption examples
-     * @throws InvalidOptionException When the option is invalid or text contains letters outside of the English alphabet
-     * @throws InvalidCharacterException when the text contains letters outside of the English alphabet
-     */
-    public static void main(String[] args) throws InvalidOptionException , InvalidCharacterException{
+    public static void main(String[] args) {
         VigenereCipherController vigenereCipherController = new VigenereCipherController();
         vigenereCipherController.vigenereCipherView = new VigenereCipherView();
-        vigenereCipherController.vigenereCipherModel = new VigenereCipherModel(args[2]);
-        vigenereCipherController.vigenereCipherView.printEncryptionTutorial(args[0], args[2],vigenereCipherController.vigenereCipherModel.getEncryptedMessage(args[0]));
-        vigenereCipherController.vigenereCipherView.printDecryptionTutorial(args[1], args[2],vigenereCipherController.vigenereCipherModel.getDecryptedMessage(args[1]));
+        vigenereCipherController.makeExamples(args);
+
+ 
 
         while(true){
             try{
@@ -54,6 +48,23 @@ public class VigenereCipherController {
             }  
         }
     }
+    
+    /**
+     * Creates the examples and calls the view functions to print the tutorial to the user
+     * @param args command line parameters used to display the encryption and decryption examples
+     */
+     private void makeExamples(String[] args){
+        try{
+            this.vigenereCipherModel = new VigenereCipherModel(args[2]);
+            this.vigenereCipherView.printEncryptionTutorial(args[0], args[2],this.vigenereCipherModel.getEncryptedMessage(args[0]));
+            this.vigenereCipherView.printDecryptionTutorial(args[1], args[2],this.vigenereCipherModel.getDecryptedMessage(args[1]));
+        }
+        
+        catch(InvalidCharacterException e){
+                this.vigenereCipherView.printError( e.getMessage());
+        }  
+     }
+    
     /**
      * Gets the user option (Encryption/Decryption)
      * @throws InvalidOptionException When the option is invalid or text contains letters outside of the English alphabet
@@ -80,7 +91,7 @@ public class VigenereCipherController {
      
    /**
     * Gets inputs(cipher text and keyword) from the view and calls the decryption method of the Model
-    * @throws InvalidCharacterException hen the cipher text contains letters outside of the English alphabet
+    * @throws InvalidCharacterException when the cipher text contains letters outside of the English alphabet
     */
     private void decryptMessage()throws InvalidCharacterException{
         String keyword = vigenereCipherView.getKeyFromUser();
