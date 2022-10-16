@@ -26,7 +26,7 @@ public class VigenereCipherController {
      */
     private VigenereCipherModel vigenereCipherModel;
     /**
-     * Calls the function to be performed based on the user's choice
+     * Prints the tutorial and calls the function to be performed based on the user's choice
      * @param args command line parameters used to display the encryption and decryption examples
      * @throws Exception When the option is invalid or text contains letters outside of the English alphabet
      */
