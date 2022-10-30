@@ -27,6 +27,8 @@ public class VigenereCipherView {
         System.out.println("Enter your choice (without spaces): ");
         System.out.println("1 : Encrypt ");
         System.out.println("2 : Decrypt ");
+        System.out.println("3 : Quit ");
+
         String choice = sc.nextLine();
         return choice;
     }
@@ -36,7 +38,7 @@ public class VigenereCipherView {
      * @param result To be shown to the user
      */
     public void outputResult(String result){
-        System.out.print(result);
+        System.out.println(result);
     }
     
     /**

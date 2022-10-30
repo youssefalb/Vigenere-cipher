@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package pl.polsl.youssef.albali.vigenere.cipher.controller;
+import java.util.*;
 import pl.polsl.youssef.albali.vigenere.cipher.view.VigenereCipherView;
 import pl.polsl.youssef.albali.vigenere.cipher.model.*;
 
@@ -32,16 +33,16 @@ public class VigenereCipherController {
      * @param args command line parameters used to display the encryption and decryption examples
      */
     public static void main(String[] args) {
+        List<String> argsList = Arrays.asList(args);
         VigenereCipherController vigenereCipherController = new VigenereCipherController();
         vigenereCipherController.vigenereCipherView = new VigenereCipherView();
-        vigenereCipherController.makeExamples(args);
+        vigenereCipherController.makeExamples(argsList);
 
  
 
         while(true){
             try{
                   vigenereCipherController.getOption();
-                  break;
             }
             catch(InvalidOptionException | InvalidCharacterException e){
                 vigenereCipherController.vigenereCipherView.printError( e.getMessage());
@@ -53,11 +54,11 @@ public class VigenereCipherController {
      * Creates the examples and calls the view functions to print the tutorial to the user
      * @param args command line parameters used to display the encryption and decryption examples
      */
-     private void makeExamples(String[] args){
+     private void makeExamples(List<String> args){
         try{
-            this.vigenereCipherModel = new VigenereCipherModel(args[2]);
-            this.vigenereCipherView.printEncryptionTutorial(args[0], args[2],this.vigenereCipherModel.getEncryptedMessage(args[0]));
-            this.vigenereCipherView.printDecryptionTutorial(args[1], args[2],this.vigenereCipherModel.getDecryptedMessage(args[1]));
+            this.vigenereCipherModel = new VigenereCipherModel(args.get(2));
+            this.vigenereCipherView.printEncryptionTutorial(args.get(0), args.get(2),this.vigenereCipherModel.getEncryptedMessage(args.get(0)));
+            this.vigenereCipherView.printDecryptionTutorial(args.get(1), args.get(2),this.vigenereCipherModel.getDecryptedMessage(args.get(1)));
         }
         
         catch(InvalidCharacterException e){
@@ -75,6 +76,7 @@ public class VigenereCipherController {
         switch (choice) {
             case "1" -> encryptMessage();
             case "2" -> decryptMessage();
+            case "3" -> System.exit(0);
             default -> throw new InvalidOptionException("invalid option was chosen: Please chose '1' or '2' options");
         }
     }
