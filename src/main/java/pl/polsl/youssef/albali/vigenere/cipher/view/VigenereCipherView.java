@@ -4,6 +4,7 @@
  */
 package pl.polsl.youssef.albali.vigenere.cipher.view;
 import java.util.*;  
+import java.util.stream.Stream;
 
 
 /**
@@ -37,8 +38,10 @@ public class VigenereCipherView {
      * Outputs results of the operation to console
      * @param result To be shown to the user
      */
-    public void outputResult(String result){
-        System.out.println(result);
+    public void outputResult(List<String> resultList){
+        Stream<String> resultStream = resultList.stream(); 
+        resultStream.forEach(word -> System.out.print(word + " "));
+        System.out.println();   
     }
     
     /**
@@ -102,12 +105,12 @@ public class VigenereCipherView {
      * @param key decryption key
      * @param decryptedMessage result of decryption
      */
-    public void printDecryptionTutorial(String ciphertext ,String key , String decryptedMessage){
+    public void printDecryptionTutorial(String ciphertext ,String key ,String result){
         System.out.println("------------------------------------------------");
         System.out.println("Decryption example:");
         System.out.println("Cipher text: " + ciphertext);
         System.out.println("Keyword: " + key);
-        System.out.println("Result of Decryption: " + decryptedMessage);
+        System.out.println("Result of Decryption: " + result);
         System.out.println("------------------------------------------------");
     }
 

@@ -4,6 +4,7 @@
  */
 package pl.polsl.youssef.albali.vigenere.cipher.controller;
 import java.util.*;
+import java.util.stream.*;
 import pl.polsl.youssef.albali.vigenere.cipher.view.VigenereCipherView;
 import pl.polsl.youssef.albali.vigenere.cipher.model.*;
 
@@ -57,8 +58,8 @@ public class VigenereCipherController {
      private void makeExamples(List<String> args){
         try{
             this.vigenereCipherModel = new VigenereCipherModel(args.get(2));
-            this.vigenereCipherView.printEncryptionTutorial(args.get(0), args.get(2),this.vigenereCipherModel.getEncryptedMessage(args.get(0)));
-            this.vigenereCipherView.printDecryptionTutorial(args.get(1), args.get(2),this.vigenereCipherModel.getDecryptedMessage(args.get(1)));
+            this.vigenereCipherView.printEncryptionTutorial(args.get(0), args.get(2),this.vigenereCipherModel.getEncryptedMessage(Stream.of(args.get(0))).get(0));
+            this.vigenereCipherView.printDecryptionTutorial(args.get(1), args.get(2),this.vigenereCipherModel.getDecryptedMessage(Stream.of(args.get(1))).get(0));
         }
         
         catch(InvalidCharacterException e){
@@ -77,7 +78,7 @@ public class VigenereCipherController {
             case "1" -> encryptMessage();
             case "2" -> decryptMessage();
             case "3" -> System.exit(0);
-            default -> throw new InvalidOptionException("invalid option was chosen: Please chose '1' or '2' options");
+            default -> throw new InvalidOptionException("Invalid option was chosen: Please chose '1', '2' or '3' options");
         }
     }
     /**
@@ -88,7 +89,8 @@ public class VigenereCipherController {
         String keyword = vigenereCipherView.getKeyFromUser();
         String message = vigenereCipherView.getMessageFromUser();
         vigenereCipherModel = new VigenereCipherModel(keyword);
-        vigenereCipherView.outputResult(vigenereCipherModel.getEncryptedMessage(message));
+        Stream<String> messageStream = Stream.of(message.split(" "));
+        vigenereCipherView.outputResult(vigenereCipherModel.getEncryptedMessage(messageStream));
     }
      
    /**
@@ -99,7 +101,8 @@ public class VigenereCipherController {
         String keyword = vigenereCipherView.getKeyFromUser();
         String cipher = vigenereCipherView.getCipherFromUser();
         vigenereCipherModel = new VigenereCipherModel(keyword);
-        vigenereCipherView.outputResult(vigenereCipherModel.getDecryptedMessage(cipher));
+        Stream<String> cipherStream = Stream.of(cipher.split(" "));
+        vigenereCipherView.outputResult(vigenereCipherModel.getDecryptedMessage(cipherStream));
     }
     
 }
