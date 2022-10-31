@@ -4,6 +4,9 @@
  */
 package pl.polsl.youssef.albali.vigenere.cipher.model;
 
+import java.util.*;
+import static java.util.Collections.list;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -22,10 +25,12 @@ public class VigenereCipherModelTest {
     @CsvSource({"youssef,ifG,gtaaxkn", "Java is Fun,KFC,Tfxk nu Pzp", "PoLsL,hmd,WaOzX"})
     public void testGetEncryptedMessage(String message, String key, String expected) throws Exception {
         System.out.println("getEncryptedMessage");
+        Stream<String> messageStream = Stream.of(message.split(" "));
         VigenereCipherModel instance = new VigenereCipherModel(key);
-        String result = instance.getEncryptedMessage(message);
-        assertEquals(expected, result);
-        //fail("The test case is a prototype.");
+        List<String> result = instance.getEncryptedMessage(messageStream);
+        String joinedResult = String.join(" ",result );
+        assertEquals(expected, joinedResult);
+        fail("Encryption Failed");
     }
 
     /**
@@ -34,15 +39,15 @@ public class VigenereCipherModelTest {
     
     @ParameterizedTest
     @CsvSource({"gtaaxkn,ifG,youssef", "Tfxk nu Pzp,KFC,Java is Fun", "WaOzX,hmd,PoLsL"})
-    public void testGetDecryptedMessage() throws Exception {
+    public void testGetDecryptedMessage(String cipherText, String key, String expected) throws Exception {
         System.out.println("getDecryptedMessage");
-        String cipherText = "";
-        VigenereCipherModel instance = null;
-        String expResult = "";
-        String result = instance.getDecryptedMessage(cipherText);
-        assertEquals(expResult, result);
+        Stream<String> cipherStream = Stream.of(cipherText.split(" "));
+        VigenereCipherModel instance = new VigenereCipherModel(key);
+        List<String> result = instance.getDecryptedMessage(cipherStream);
+        String joinedResult = String.join(" ",result );
+        assertEquals(expected, joinedResult);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        fail("Decryption Failed");
     }
     
 }

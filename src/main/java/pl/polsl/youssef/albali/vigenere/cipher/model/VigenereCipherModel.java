@@ -69,7 +69,7 @@ public class VigenereCipherModel {
     public List<String> getEncryptedMessage(Stream<String> messageStream)throws InvalidCharacterException{
         ConvertOperation convertForUppercase = (a , b) -> (char) ((a + Character.toUpperCase(b) - 2 * 'A') % 26 + 'A');
         ConvertOperation convertForLowercase = (a , b) -> (char) ((a + Character.toLowerCase(b)- 2 *'a') % 26 + 'a');
-        List<String> encryptedMessageList = new ArrayList<String>();
+        List<String> encryptedMessageList = new ArrayList<>();
         for (String word : (Iterable<String>) messageStream::iterator) {
             encryptedMessageList.add(convertText(word,convertForUppercase, convertForLowercase));
         }
@@ -85,7 +85,7 @@ public class VigenereCipherModel {
     public List<String> getDecryptedMessage(Stream<String> cipherTextStream) throws InvalidCharacterException{
         ConvertOperation convertForUppercase = (a , b) -> (char) ((a - Character.toUpperCase(b)+ 26) % 26 + 'A');
         ConvertOperation convertForLowercase = (a , b) -> (char) ((a - Character.toLowerCase(b)+ 26) % 26 + 'a');
-        List<String> decryptedMessageList = new ArrayList<String>();
+        List<String> decryptedMessageList = new ArrayList<>();
         for (String word : (Iterable<String>) cipherTextStream::iterator) {
             decryptedMessageList.add(convertText(word,convertForUppercase, convertForLowercase));
         }
