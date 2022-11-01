@@ -45,7 +45,7 @@ public class VigenereCipherController {
             try{
                   vigenereCipherController.getOption();
             }
-            catch(InvalidOptionException | InvalidCharacterException e){
+            catch(InvalidOptionException | InvalidCharacterException | EmptyKey e){
                 vigenereCipherController.vigenereCipherView.printError( e.getMessage());
             }  
         }
@@ -62,7 +62,7 @@ public class VigenereCipherController {
             this.vigenereCipherView.printDecryptionTutorial(args.get(1), args.get(2),this.vigenereCipherModel.getDecryptedMessage(Stream.of(args.get(1))).get(0));
         }
         
-        catch(InvalidCharacterException e){
+        catch(InvalidCharacterException| EmptyKey e){
                 this.vigenereCipherView.printError( e.getMessage());
         }  
      }
@@ -72,7 +72,7 @@ public class VigenereCipherController {
      * @throws InvalidOptionException When the option is invalid or text contains letters outside of the English alphabet
      * @throws InvalidCharacterException when the text contains letters outside of the English alphabet
      */
-    private void getOption()throws InvalidOptionException , InvalidCharacterException{
+    private void getOption()throws InvalidOptionException , InvalidCharacterException, EmptyKey{
         String choice = vigenereCipherView.getChoiceFromUser();
         switch (choice) {
             case "1" -> encryptMessage();
@@ -85,7 +85,7 @@ public class VigenereCipherController {
      * Gets inputs(message and keyword) from the view and calls the encryption method of the Model
      * @throws InvalidCharacterException when the message contains letters outside of the English alphabet
      */
-    private void encryptMessage() throws InvalidCharacterException {
+    private void encryptMessage() throws InvalidCharacterException, EmptyKey{
         String keyword = vigenereCipherView.getKeyFromUser();
         String message = vigenereCipherView.getMessageFromUser();
         vigenereCipherModel = new VigenereCipherModel(keyword);
@@ -97,7 +97,7 @@ public class VigenereCipherController {
     * Gets inputs(cipher text and keyword) from the view and calls the decryption method of the Model
     * @throws InvalidCharacterException when the cipher text contains letters outside of the English alphabet
     */
-    private void decryptMessage()throws InvalidCharacterException{
+    private void decryptMessage()throws InvalidCharacterException, EmptyKey{
         String keyword = vigenereCipherView.getKeyFromUser();
         String cipher = vigenereCipherView.getCipherFromUser();
         vigenereCipherModel = new VigenereCipherModel(keyword);

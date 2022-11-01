@@ -22,14 +22,33 @@ public class VigenereCipherModel {
     /**
      * Model class constructor
      * @param keyword key chosen by the user
-     * @throws InvalidCharacterException when the key contain spaces or invalid characters
+     * @throws pl.polsl.youssef.albali.vigenere.cipher.model.InvalidCharacterException when the key contain spaces or invalid characters
+     * @throws pl.polsl.youssef.albali.vigenere.cipher.model.EmptyKey 
      */
-    public VigenereCipherModel(String keyword) throws InvalidCharacterException{
+    public VigenereCipherModel(String keyword) throws InvalidCharacterException, EmptyKey{
             this.CheckKey(keyword);
     }
+    
+    /**
+     * 
+     */
     interface ConvertOperation{
+        /**
+         * 
+         * @param letter
+         * @param keyLetter
+         * @return 
+         */
         char convert(char letter, char keyLetter);
     }
+    /**
+     * 
+     * @param text
+     * @param convertForUppercase
+     * @param convertForLowercase
+     * @return
+     * @throws InvalidCharacterException 
+     */
     String convertText(String text,ConvertOperation convertForUppercase, ConvertOperation convertForLowercase) throws InvalidCharacterException{
         String result = "";
         for (int i = 0, j = 0; i < text.length(); i++){
@@ -49,8 +68,11 @@ public class VigenereCipherModel {
      * @param keyword
      * @throws InvalidCharacterException 
      */
-    private void CheckKey(String keyword) throws InvalidCharacterException{
+    private void CheckKey(String keyword) throws InvalidCharacterException , EmptyKey{
     keyword = keyword.toUpperCase();
+    if(keyword.isEmpty()){
+    throw new EmptyKey("invalid keyword: Key is Empty");
+    }
     for (int i = 0; i < keyword.length(); i++){
         if( !(keyword.charAt(i) >= 'A' && keyword.charAt(i) <= 'Z')) {
             throw new InvalidCharacterException("invalid keyword: The key should contain only charcters A-Z and a-z and without spaces");            
@@ -61,11 +83,10 @@ public class VigenereCipherModel {
     
     /**
      * Gets a message and encrypts it using Vigenère cipher method
-     * @param message Text to be encrypted 
+     * @param messageStream Stream of text to be encrypted 
      * @return Encrypted message
      * @throws InvalidCharacterException When message contains a character outside of English letters 
      */
-    //I am youssef
     public List<String> getEncryptedMessage(Stream<String> messageStream)throws InvalidCharacterException{
         ConvertOperation convertForUppercase = (a , b) -> (char) ((a + Character.toUpperCase(b) - 2 * 'A') % 26 + 'A');
         ConvertOperation convertForLowercase = (a , b) -> (char) ((a + Character.toLowerCase(b)- 2 *'a') % 26 + 'a');

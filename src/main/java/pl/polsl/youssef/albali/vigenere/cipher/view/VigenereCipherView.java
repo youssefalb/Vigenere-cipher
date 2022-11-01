@@ -36,12 +36,12 @@ public class VigenereCipherView {
     
     /**
      * Outputs results of the operation to console
-     * @param result To be shown to the user
+     * @param resultList
      */
     public void outputResult(List<String> resultList){
         Stream<String> resultStream = resultList.stream(); 
         resultStream.forEach(word -> System.out.print(word + " "));
-        System.out.println();   
+        System.out.println(); 
     }
     
     /**
