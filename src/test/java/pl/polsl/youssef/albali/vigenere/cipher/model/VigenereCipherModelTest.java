@@ -15,7 +15,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 /**
- *
+ * Tests the model's methods and possible cases of arguments
  * @author youssef albali
  */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -23,9 +23,9 @@ public class VigenereCipherModelTest {
 
     /**
      * Test of getEncryptedMessage method, of class VigenereCipherModel.
-     * @param message
-     * @param key
-     * @param expected
+     * @param message Message to encrypt
+     * @param key Keyword
+     * @param expected Expected result of encryption
      */
     @ParameterizedTest
     @Order(1)
@@ -47,13 +47,13 @@ public class VigenereCipherModelTest {
 
     /**
      * Test of getDecryptedMessage method, of class VigenereCipherModel.
-     * @param cipherText
-     * @param key
-     * @param expected
+     * @param cipherText Cipher text to decrypt
+     * @param key Keyword
+     * @param expected Expected result of decryption
      */
     @ParameterizedTest
     @Order(2)
-    @CsvSource({"gtaaxkn,ifG,youssef", "Tfxk nu Pzp,KFC,Java is Fun", "WaOzX,hmd,PoLsL"})
+    @CsvSource({"gtaaxkn,ifG,youssef", "Tfxk nu Pzp,KFC,Java is Fun", "WaOzX,hmd,PoLsL", "non łatin,mykey,"})
     public void testGetDecryptedMessage(String cipherText, String key, String expected){
         System.out.println("getDecryptedMessage");
         Stream<String> cipherStream = Stream.of(cipherText.split(" "));
@@ -69,12 +69,11 @@ public class VigenereCipherModelTest {
         }
     }
     
- 
     
     @Test
     @Order(3)
     public void testEncryptionCases(){
-        System.out.println("testKeyCases");
+        System.out.println("testEncryptionCases");
 
         try {
             VigenereCipherModel testModel = new VigenereCipherModel("Mykey");
@@ -82,13 +81,7 @@ public class VigenereCipherModelTest {
                 testModel.getEncryptedMessage(Stream.of("non łatin alphabet".split(" ")));
                 fail("Message should be caught as the message contains non-latin symbols.");
             }
-            catch(InvalidCharacterException ex){}
-            try {
-                testModel.getEncryptedMessage(Stream.of(" ".split(" ")));
-                fail("Message should be caught as the message contains non-latin symbols.");
-            }
-            catch(InvalidCharacterException ex1){}
-            
+            catch(InvalidCharacterException ex){}            
             try{
                 testModel.getEncryptedMessage(Stream.of("My name is Hamif123 ".split(" ")));
                 fail("Message should be caught as the message contains numbers.");
@@ -117,7 +110,7 @@ public class VigenereCipherModelTest {
     @Test
     @Order(4)
     public void testDecryptionCases(){
-        System.out.println("testKeyCases");
+        System.out.println("testDecryptionCases");
 
         try {
             VigenereCipherModel testModel = new VigenereCipherModel("Mykey");

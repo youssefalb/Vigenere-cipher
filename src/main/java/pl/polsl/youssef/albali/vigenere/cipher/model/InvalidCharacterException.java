@@ -5,10 +5,6 @@
 package pl.polsl.youssef.albali.vigenere.cipher.model;
 
 /**
- *
- * @author youssef albali
- */
-/**
  * Exception class for objects thrown when the text contains a character outside of English letters 
  * @author youssef albali
  * @version 1.0

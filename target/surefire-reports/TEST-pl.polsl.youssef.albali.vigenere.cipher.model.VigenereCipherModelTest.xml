@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="pl.polsl.youssef.albali.vigenere.cipher.model.VigenereCipherModelTest" time="0.1" tests="3" errors="0" skipped="0" failures="3">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="pl.polsl.youssef.albali.vigenere.cipher.model.VigenereCipherModelTest" time="0.106" tests="3" errors="0" skipped="0" failures="3">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,9 +15,9 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17.0.1\bin"/>
-    <property name="sun.java.command" value="C:\Users\YOUSSE~1\AppData\Local\Temp\surefire14843521101371111912\surefirebooter16343305185056701019.jar C:\Users\youssef albali\AppData\Local\Temp\surefire14843521101371111912 2022-11-01T00-02-10_847-jvmRun1 surefire6730748429963192194tmp surefire_05330104638129501499tmp"/>
+    <property name="sun.java.command" value="C:\Users\YOUSSE~1\AppData\Local\Temp\surefire11166648068488961333\surefirebooter10655342773741544612.jar C:\Users\youssef albali\AppData\Local\Temp\surefire11166648068488961333 2022-11-01T21-15-20_894-jvmRun1 surefire15528095717977214951tmp surefire_05424390048561702865tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="test" value="pl.polsl.youssef.albali.vigenere.cipher.model.VigenereCipherModelTest#testGetEncryptedMessage"/>
+    <property name="test" value="pl.polsl.youssef.albali.vigenere.cipher.model.VigenereCipherModelTest#testGetDecryptedMessage"/>
     <property name="surefire.test.class.path" value="C:\Users\youssef albali\OneDrive\Desktop\SEM 5\jiiamd\lab1\Vigenere-cipher\target\test-classes;C:\Users\youssef albali\OneDrive\Desktop\SEM 5\jiiamd\lab1\Vigenere-cipher\target\classes;C:\Users\youssef albali\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.0\junit-jupiter-api-5.6.0.jar;C:\Users\youssef albali\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\youssef albali\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\youssef albali\.m2\repository\org\junit\platform\junit-platform-commons\1.6.0\junit-platform-commons-1.6.0.jar;C:\Users\youssef albali\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.6.0\junit-jupiter-params-5.6.0.jar;C:\Users\youssef albali\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.6.0\junit-jupiter-engine-5.6.0.jar;C:\Users\youssef albali\.m2\repository\org\junit\platform\junit-platform-engine\1.6.0\junit-platform-engine-1.6.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\youssef albali"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\YOUSSE~1\AppData\Local\Temp\surefire14843521101371111912\surefirebooter16343305185056701019.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\YOUSSE~1\AppData\Local\Temp\surefire11166648068488961333\surefirebooter10655342773741544612.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.1+12-LTS-39"/>
@@ -58,25 +58,25 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testGetEncryptedMessage{String, String, String}[1]" classname="pl.polsl.youssef.albali.vigenere.cipher.model.VigenereCipherModelTest" time="0.042">
-    <failure message="Encryption Failed" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: Encryption Failed
-	at pl.polsl.youssef.albali.vigenere.cipher.model.VigenereCipherModelTest.testGetEncryptedMessage(VigenereCipherModelTest.java:33)
+  <testcase name="testGetDecryptedMessage{String, String, String}[1]" classname="pl.polsl.youssef.albali.vigenere.cipher.model.VigenereCipherModelTest" time="0.047">
+    <failure message="The expected decryption is not the same as the returned one" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: The expected decryption is not the same as the returned one
+	at pl.polsl.youssef.albali.vigenere.cipher.model.VigenereCipherModelTest.testGetDecryptedMessage(VigenereCipherModelTest.java:65)
 </failure>
-    <system-out><![CDATA[getEncryptedMessage
+    <system-out><![CDATA[getDecryptedMessage
 ]]></system-out>
   </testcase>
-  <testcase name="testGetEncryptedMessage{String, String, String}[2]" classname="pl.polsl.youssef.albali.vigenere.cipher.model.VigenereCipherModelTest" time="0.002">
-    <failure message="expected: &lt;Tfxk nu Pzp&gt; but was: &lt;Tfxk sx Pzp&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <Tfxk nu Pzp> but was: <Tfxk sx Pzp>
-	at pl.polsl.youssef.albali.vigenere.cipher.model.VigenereCipherModelTest.testGetEncryptedMessage(VigenereCipherModelTest.java:32)
+  <testcase name="testGetDecryptedMessage{String, String, String}[2]" classname="pl.polsl.youssef.albali.vigenere.cipher.model.VigenereCipherModelTest" time="0.002">
+    <failure message="expected: &lt;Java is Fun&gt; but was: &lt;Java dp Fun&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <Java is Fun> but was: <Java dp Fun>
+	at pl.polsl.youssef.albali.vigenere.cipher.model.VigenereCipherModelTest.testGetDecryptedMessage(VigenereCipherModelTest.java:64)
 ]]></failure>
-    <system-out><![CDATA[getEncryptedMessage
+    <system-out><![CDATA[getDecryptedMessage
 ]]></system-out>
   </testcase>
-  <testcase name="testGetEncryptedMessage{String, String, String}[3]" classname="pl.polsl.youssef.albali.vigenere.cipher.model.VigenereCipherModelTest" time="0.002">
-    <failure message="Encryption Failed" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: Encryption Failed
-	at pl.polsl.youssef.albali.vigenere.cipher.model.VigenereCipherModelTest.testGetEncryptedMessage(VigenereCipherModelTest.java:33)
+  <testcase name="testGetDecryptedMessage{String, String, String}[3]" classname="pl.polsl.youssef.albali.vigenere.cipher.model.VigenereCipherModelTest" time="0.001">
+    <failure message="The expected decryption is not the same as the returned one" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: The expected decryption is not the same as the returned one
+	at pl.polsl.youssef.albali.vigenere.cipher.model.VigenereCipherModelTest.testGetDecryptedMessage(VigenereCipherModelTest.java:65)
 </failure>
-    <system-out><![CDATA[getEncryptedMessage
+    <system-out><![CDATA[getDecryptedMessage
 ]]></system-out>
   </testcase>
 </testsuite>

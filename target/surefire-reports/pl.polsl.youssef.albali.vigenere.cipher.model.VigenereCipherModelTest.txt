@@ -1,16 +1,16 @@
 -------------------------------------------------------------------------------
 Test set: pl.polsl.youssef.albali.vigenere.cipher.model.VigenereCipherModelTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0.1 s <<< FAILURE! - in pl.polsl.youssef.albali.vigenere.cipher.model.VigenereCipherModelTest
-testGetEncryptedMessage{String, String, String}[1]  Time elapsed: 0.042 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: Encryption Failed
-	at pl.polsl.youssef.albali.vigenere.cipher.model.VigenereCipherModelTest.testGetEncryptedMessage(VigenereCipherModelTest.java:33)
+Tests run: 3, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0.106 s <<< FAILURE! - in pl.polsl.youssef.albali.vigenere.cipher.model.VigenereCipherModelTest
+testGetDecryptedMessage{String, String, String}[1]  Time elapsed: 0.047 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: The expected decryption is not the same as the returned one
+	at pl.polsl.youssef.albali.vigenere.cipher.model.VigenereCipherModelTest.testGetDecryptedMessage(VigenereCipherModelTest.java:65)
 
-testGetEncryptedMessage{String, String, String}[2]  Time elapsed: 0.002 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: <Tfxk nu Pzp> but was: <Tfxk sx Pzp>
-	at pl.polsl.youssef.albali.vigenere.cipher.model.VigenereCipherModelTest.testGetEncryptedMessage(VigenereCipherModelTest.java:32)
+testGetDecryptedMessage{String, String, String}[2]  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <Java is Fun> but was: <Java dp Fun>
+	at pl.polsl.youssef.albali.vigenere.cipher.model.VigenereCipherModelTest.testGetDecryptedMessage(VigenereCipherModelTest.java:64)
 
-testGetEncryptedMessage{String, String, String}[3]  Time elapsed: 0.002 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: Encryption Failed
-	at pl.polsl.youssef.albali.vigenere.cipher.model.VigenereCipherModelTest.testGetEncryptedMessage(VigenereCipherModelTest.java:33)
+testGetDecryptedMessage{String, String, String}[3]  Time elapsed: 0.001 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: The expected decryption is not the same as the returned one
+	at pl.polsl.youssef.albali.vigenere.cipher.model.VigenereCipherModelTest.testGetDecryptedMessage(VigenereCipherModelTest.java:65)
 

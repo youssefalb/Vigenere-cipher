@@ -23,31 +23,31 @@ public class VigenereCipherModel {
      * Model class constructor
      * @param keyword key chosen by the user
      * @throws pl.polsl.youssef.albali.vigenere.cipher.model.InvalidCharacterException when the key contain spaces or invalid characters
-     * @throws pl.polsl.youssef.albali.vigenere.cipher.model.EmptyKey 
+     * @throws pl.polsl.youssef.albali.vigenere.cipher.model.EmptyKey When the keyword is empty
      */
     public VigenereCipherModel(String keyword) throws InvalidCharacterException, EmptyKey{
             this.CheckKey(keyword);
     }
     
     /**
-     * 
+     * Interface used in convert operation
      */
     interface ConvertOperation{
         /**
-         * 
-         * @param letter
-         * @param keyLetter
-         * @return 
+         * the conversion operation
+         * @param letter Letter from the text
+         * @param keyLetter letter from the keyword
+         * @return result
          */
         char convert(char letter, char keyLetter);
     }
     /**
      * 
-     * @param text
-     * @param convertForUppercase
-     * @param convertForLowercase
-     * @return
-     * @throws InvalidCharacterException 
+     * @param text text to be converted
+     * @param convertForUppercase The conversion operation for uppercase letters
+     * @param convertForLowercase The conversion operation for lowercase letters
+     * @return result of conversion
+     * @throws InvalidCharacterException When the text contains an invalid character
      */
     String convertText(String text,ConvertOperation convertForUppercase, ConvertOperation convertForLowercase) throws InvalidCharacterException{
         String result = "";
@@ -63,10 +63,11 @@ public class VigenereCipherModel {
         }
         return result;
     }
+    
     /**
-     * 
+     * function that checks the validity of the keyword and assigns it.
      * @param keyword
-     * @throws InvalidCharacterException 
+     * @throws InvalidCharacterException When the key contains an invalid character
      */
     private void CheckKey(String keyword) throws InvalidCharacterException , EmptyKey{
     keyword = keyword.toUpperCase();
@@ -99,7 +100,7 @@ public class VigenereCipherModel {
 
  /**
   * Gets a cipher text and decrypts it using Vigenère cipher method
-  * @param cipherTextStream
+  * @param cipherTextStream Stream of cipher text to be decrypted
   * @return Original message
   * @throws InvalidCharacterException When cipher text contains a character outside of English letters 
   */

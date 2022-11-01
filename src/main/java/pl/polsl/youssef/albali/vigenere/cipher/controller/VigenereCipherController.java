@@ -20,7 +20,7 @@ import pl.polsl.youssef.albali.vigenere.cipher.model.*;
 
 public class VigenereCipherController {
     /**
-     * Model instance used to get  and output data
+     * View instance used to get and output data
      */
     private VigenereCipherView vigenereCipherView;
     
@@ -84,6 +84,7 @@ public class VigenereCipherController {
     /**
      * Gets inputs(message and keyword) from the view and calls the encryption method of the Model
      * @throws InvalidCharacterException when the message contains letters outside of the English alphabet
+     * @throws EmptyKey when the chosen key is empty
      */
     private void encryptMessage() throws InvalidCharacterException, EmptyKey{
         String keyword = vigenereCipherView.getKeyFromUser();
@@ -96,6 +97,7 @@ public class VigenereCipherController {
    /**
     * Gets inputs(cipher text and keyword) from the view and calls the decryption method of the Model
     * @throws InvalidCharacterException when the cipher text contains letters outside of the English alphabet
+    * @throws EmptyKey when the chosen key is empty
     */
     private void decryptMessage()throws InvalidCharacterException, EmptyKey{
         String keyword = vigenereCipherView.getKeyFromUser();
