@@ -5,7 +5,8 @@
 package pl.polsl.youssef.albali.vigenere.cipher.controller;
 import java.util.*;
 import java.util.stream.*;
-import pl.polsl.youssef.albali.vigenere.cipher.view.VigenereCipherView;
+import javax.swing.JFrame;
+import pl.polsl.youssef.albali.vigenere.cipher.view.*;
 import pl.polsl.youssef.albali.vigenere.cipher.model.*;
 
 
@@ -38,17 +39,19 @@ public class VigenereCipherController {
         VigenereCipherController vigenereCipherController = new VigenereCipherController();
         vigenereCipherController.vigenereCipherView = new VigenereCipherView();
         vigenereCipherController.makeExamples(argsList);
-
- 
-
-        while(true){
-            try{
-                  vigenereCipherController.getOption();
-            }
-            catch(InvalidOptionException | InvalidCharacterException | EmptyKey e){
-                vigenereCipherController.vigenereCipherView.printError( e.getMessage());
-            }  
-        }
+        VigenereCipherGui myGui = new VigenereCipherGui();
+        JFrame guiFrame = new JFrame();
+        guiFrame.setVisible(true);
+        guiFrame.add(myGui);
+        
+//        while(true){
+//            try{
+//                  vigenereCipherController.getOption();
+//            }
+//            catch(InvalidOptionException | InvalidCharacterException | EmptyKey e){
+//                vigenereCipherController.vigenereCipherView.printError( e.getMessage());
+//            }  
+//        }
     }
     
     /**
@@ -99,15 +102,21 @@ public class VigenereCipherController {
     * @throws InvalidCharacterException when the cipher text contains letters outside of the English alphabet
     * @throws EmptyKey when the chosen key is empty
     */
-    private void decryptMessage()throws InvalidCharacterException, EmptyKey{
+    public void decryptMessage()throws InvalidCharacterException, EmptyKey{
         String keyword = vigenereCipherView.getKeyFromUser();
         String cipher = vigenereCipherView.getCipherFromUser();
         vigenereCipherModel = new VigenereCipherModel(keyword);
         Stream<String> cipherStream = Stream.of(cipher.split(" "));
         vigenereCipherView.outputResult(vigenereCipherModel.getDecryptedMessage(cipherStream));
     }
+    public void encryptMessageAfterClick(String keyword, String message) throws InvalidCharacterException, EmptyKey{
+        vigenereCipherModel = new VigenereCipherModel(keyword);
+        Stream<String> messageStream = Stream.of(message.split(" "));
+        //vigenereCipherView.outputResult(vigenereCipherModel.getEncryptedMessage(messageStream));
+    }
     
 }
+    
 
 /**
  * Exception class for objects thrown when an invalid option is chosen

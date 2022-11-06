@@ -24,7 +24,7 @@ public class VigenereCipherModelTest {
     /**
      * Test of getEncryptedMessage method, of class VigenereCipherModel.
      * @param message Message to encrypt
-     * @param key Keyword
+     * @param key Keyword of encryption
      * @param expected Expected result of encryption
      */
     @ParameterizedTest
@@ -48,7 +48,7 @@ public class VigenereCipherModelTest {
     /**
      * Test of getDecryptedMessage method, of class VigenereCipherModel.
      * @param cipherText Cipher text to decrypt
-     * @param key Keyword
+     * @param key Keyword of encryption
      * @param expected Expected result of decryption
      */
     @ParameterizedTest
@@ -69,7 +69,9 @@ public class VigenereCipherModelTest {
         }
     }
     
-    
+    /**
+     * Testing all encryption inputs possible cases
+     */
     @Test
     @Order(3)
     public void testEncryptionCases(){
@@ -106,7 +108,9 @@ public class VigenereCipherModelTest {
         }
         
     }
-    
+    /**
+     * Testing all decryption inputs possible cases
+     */
     @Test
     @Order(4)
     public void testDecryptionCases(){
@@ -144,7 +148,9 @@ public class VigenereCipherModelTest {
         }
         
     }
-    
+    /**
+     * Testing all key inputs possible cases
+     */
     @Test
     @Order(5)
     public void testKeyCases(){

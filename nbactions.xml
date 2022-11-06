@@ -8,6 +8,8 @@
             <goals>
                 <goal>generate-sources</goal>
                 <goal>javadoc:javadoc</goal>
+                
+                
             </goals>
             <properties>
                 <show>private</show>

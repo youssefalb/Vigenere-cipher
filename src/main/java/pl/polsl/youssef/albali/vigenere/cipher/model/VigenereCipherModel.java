@@ -30,7 +30,7 @@ public class VigenereCipherModel {
     }
     
     /**
-     * Interface used in convert operation
+     * Interface used for text conversions
      */
     interface ConvertOperation{
         /**
@@ -66,8 +66,9 @@ public class VigenereCipherModel {
     
     /**
      * function that checks the validity of the keyword and assigns it.
-     * @param keyword
+     * @param keyword The keyword to verify
      * @throws InvalidCharacterException When the key contains an invalid character
+     * @throws EmptyKey When the key is empty
      */
     private void CheckKey(String keyword) throws InvalidCharacterException , EmptyKey{
     keyword = keyword.toUpperCase();

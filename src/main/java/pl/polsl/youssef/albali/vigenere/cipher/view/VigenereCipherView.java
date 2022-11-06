@@ -105,12 +105,12 @@ public class VigenereCipherView {
      * @param key decryption key
      * @param decryptedMessage result of decryption
      */
-    public void printDecryptionTutorial(String ciphertext ,String key ,String result){
+    public void printDecryptionTutorial(String ciphertext ,String key ,String decryptedMessage){
         System.out.println("------------------------------------------------");
         System.out.println("Decryption example:");
         System.out.println("Cipher text: " + ciphertext);
         System.out.println("Keyword: " + key);
-        System.out.println("Result of Decryption: " + result);
+        System.out.println("Result of Decryption: " + decryptedMessage);
         System.out.println("------------------------------------------------");
     }
 

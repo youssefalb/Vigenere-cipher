@@ -1,5 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/package-info.java to edit this template
+/**
+ * Contains one class: {@link pl.polsl.youssef.albali.vigenere.cipher.model.VigenereCipherModelTest} to test public methods of the model and possible cases 
  */
 package pl.polsl.youssef.albali.vigenere.cipher.model;
