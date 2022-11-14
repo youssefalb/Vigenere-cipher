@@ -3,9 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package pl.polsl.youssef.albali.vigenere.cipher.view;
+import pl.polsl.youssef.albali.vigenere.cipher.controller.VigenereCipherController;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.JOptionPane;
 
 
 
@@ -18,9 +20,12 @@ public class VigenereCipherFrame extends javax.swing.JFrame {
     /**
      * Creates new form VigenereCipherFrame
      */
-    public VigenereCipherFrame() {
+    VigenereCipherController controller;
+    public VigenereCipherFrame(VigenereCipherController controller) {
+        this.controller = controller;
         initComponents();
         model = (DefaultTableModel) this.historyTable.getModel();
+        this.setVisible(true);
     }
 
     /**
@@ -37,17 +42,37 @@ public class VigenereCipherFrame extends javax.swing.JFrame {
         messageInput = new javax.swing.JTextField();
         encryptionKey = new javax.swing.JTextField();
         encryptButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         cipherTextInput = new javax.swing.JTextField();
         decryptionKey = new javax.swing.JTextField();
         decryptButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         historyTable = new javax.swing.JTable();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        closeOption = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        manOption = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         encryptButton.setText("Encrypt");
+        encryptButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                encryptButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        jLabel3.setText("Encryption key");
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        jLabel4.setText("Text to encrypt");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -59,19 +84,25 @@ public class VigenereCipherFrame extends javax.swing.JFrame {
                     .addComponent(encryptButton)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(messageInput, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(encryptionKey, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(encryptionKey, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(266, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(messageInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(messageInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(encryptionKey, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(encryptButton)
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
 
         encryptButton.getAccessibleContext().setAccessibleName("");
@@ -82,6 +113,17 @@ public class VigenereCipherFrame extends javax.swing.JFrame {
         tabbedPanOptions.addTab("Encrypt", jPanel2);
 
         decryptButton.setText("Decrypt");
+        decryptButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                decryptButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        jLabel1.setText("Text to decrypt");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        jLabel2.setText("Enter key");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -93,19 +135,25 @@ public class VigenereCipherFrame extends javax.swing.JFrame {
                     .addComponent(decryptButton)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(cipherTextInput, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(decryptionKey, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(decryptionKey, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(266, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(cipherTextInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cipherTextInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addGap(5, 5, 5)
                 .addComponent(decryptionKey, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(decryptButton)
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
 
         decryptButton.getAccessibleContext().setAccessibleName("decryptBtn");
@@ -115,7 +163,7 @@ public class VigenereCipherFrame extends javax.swing.JFrame {
         historyTable.setModel(new javax.swing.table.DefaultTableModel(
             null,
             new String [] {
-                "Operation", "Text", "Key", "Result"
+                "Time","Operation", "Text", "Key", "Result"
             }
         ));
         jScrollPane1.setViewportView(historyTable);
@@ -125,20 +173,48 @@ public class VigenereCipherFrame extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         tabbedPanOptions.addTab("History", jPanel3);
         jPanel3.getAccessibleContext().setAccessibleName("");
+
+        jMenu1.setText("File");
+
+        closeOption.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        closeOption.setText("Close");
+        closeOption.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeOptionActionPerformed(evt);
+            }
+        });
+        jMenu1.add(closeOption);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Help");
+
+        manOption.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        manOption.setText("How to use the app");
+        manOption.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manOptionActionPerformed(evt);
+            }
+        });
+        jMenu2.add(manOption);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -159,24 +235,36 @@ public class VigenereCipherFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public  javax.swing.JButton getEncryptButton(){
-        return encryptButton;
-    }
-    public  javax.swing.JButton getDecryptButton(){
-        return decryptButton;
-    }
-    public String getCurrentMessage(){
-        return messageInput.getText();
-    }
-    public String getEncryptionKey(){
-        return encryptionKey.getText();
-    }
-    public String getCurrentCipherText(){
-        return cipherTextInput.getText();
+
+    private void encryptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_encryptButtonActionPerformed
+        controller.encryptMessageAfterClick(encryptionKey.getText(), messageInput.getText());
+    }//GEN-LAST:event_encryptButtonActionPerformed
+
+    private void decryptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_decryptButtonActionPerformed
+        controller.decryptMessageAfterClick(decryptionKey.getText(), cipherTextInput.getText());
+    }//GEN-LAST:event_decryptButtonActionPerformed
+
+    private void closeOptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeOptionActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_closeOptionActionPerformed
+
+    private void manOptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manOptionActionPerformed
+            JOptionPane.showMessageDialog(this, """
+            Perform Encryption and Decryption by choosing the righttab and providing the Text and the Key
+            Remember:
+            The text and the key can not contain any Alphabets outside the English language
+            The key can not be emptyThe key can not contain spaces""", "Help", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_manOptionActionPerformed
+    public void showErrorMessage(String error){
+        JOptionPane.showMessageDialog(this, error, "Erorr", JOptionPane.WARNING_MESSAGE);
     }
     
-    public String getDecryptionKey(){
-        return decryptionKey.getText();
+    public void showResult(String result){
+            JOptionPane.showMessageDialog(this, result, "Result", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public void addHistoryRecord(String ... info){
+    model.addRow(info);
     }
     /**
      * 
@@ -198,15 +286,24 @@ public class VigenereCipherFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cipherTextInput;
+    private javax.swing.JMenuItem closeOption;
     private javax.swing.JButton decryptButton;
     private javax.swing.JTextField decryptionKey;
     private javax.swing.JButton encryptButton;
     private javax.swing.JTextField encryptionKey;
     private javax.swing.JTable historyTable;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenuItem manOption;
     private javax.swing.JTextField messageInput;
     private javax.swing.JTabbedPane tabbedPanOptions;
     // End of variables declaration//GEN-END:variables

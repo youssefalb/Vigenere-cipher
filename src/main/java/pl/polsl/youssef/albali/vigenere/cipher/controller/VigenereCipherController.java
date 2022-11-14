@@ -3,9 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package pl.polsl.youssef.albali.vigenere.cipher.controller;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Stream;
-import javax.swing.JOptionPane;
 import pl.polsl.youssef.albali.vigenere.cipher.view.*;
 import pl.polsl.youssef.albali.vigenere.cipher.model.*;
 
@@ -38,34 +38,10 @@ public class VigenereCipherController {
     public static void main(String[] args) {
         List<String> argsList = Arrays.asList(args);
         VigenereCipherController vigenereCipherController = new VigenereCipherController();
+        vigenereCipherController.vigenereGui = new VigenereCipherFrame(vigenereCipherController);
         vigenereCipherController.makeExamples(argsList);
-        vigenereCipherController.vigenereGui = new VigenereCipherFrame();
-        vigenereCipherController.initController();
-        vigenereCipherController.vigenereGui.setVisible(true);
-       
     }
-    /**
-     * 
-     */
-    public void initController(){
-        vigenereGui.getEncryptButton().addActionListener(e->{
-            try {
-                encryptMessageAfterClick(vigenereGui.getEncryptionKey(),vigenereGui.getCurrentMessage());
-                vigenereGui.emptyEncryptionfFields();
-            } catch (InvalidCharacterException |EmptyKey ex) {
-                  JOptionPane.showMessageDialog(vigenereGui, ex.getMessage(), "Erorr", JOptionPane.WARNING_MESSAGE);
-            }
-        });
-        vigenereGui.getDecryptButton().addActionListener(e->{
-            try {
-                this.decryptMessageAfterClick(vigenereGui.getDecryptionKey(),vigenereGui.getCurrentCipherText());
-                vigenereGui.emptyDecryptionfFields();
-            } catch (InvalidCharacterException |EmptyKey ex) {
-                  JOptionPane.showMessageDialog(vigenereGui, ex.getMessage(), "Erorr", JOptionPane.WARNING_MESSAGE);
-            }
-        });
-           
-    }
+
     /**
      * Creates the examples and calls the view functions to print the tutorial to the user
      * @param args command line parameters used to display the encryption and decryption examples
@@ -82,21 +58,34 @@ public class VigenereCipherController {
         }  
      }
      
+    
 
-
-    public void encryptMessageAfterClick(String keyword, String message) throws InvalidCharacterException, EmptyKey{
+    public void encryptMessageAfterClick(String keyword, String message){
+        
+        try {
         vigenereCipherModel = new VigenereCipherModel(keyword);
-        Stream<String> messageStream = Stream.of(message.split(" "));
-        JOptionPane.showMessageDialog(vigenereGui, "Encryption result: " + String.join(" ",vigenereCipherModel.getEncryptedMessage(messageStream)
-        ), "Info", JOptionPane.INFORMATION_MESSAGE);
+        Stream<String> messageStream = Stream.of(message.split(" ")); 
+        String result = String.join(" ",vigenereCipherModel.getEncryptedMessage(messageStream));
+        vigenereGui.showResult(result);
+        vigenereGui.addHistoryRecord(new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime()),"Encryption", message , keyword,result);
+
+        }
+        catch(InvalidCharacterException| EmptyKey e) {
+            vigenereGui.showErrorMessage(e.getMessage());
+        }
     }
     
-    public void decryptMessageAfterClick(String keyword, String cipherText) throws InvalidCharacterException, EmptyKey{
-        vigenereCipherModel = new VigenereCipherModel(keyword);
-        Stream<String> cipherStream = Stream.of(cipherText.split(" "));
-          JOptionPane.showMessageDialog(vigenereGui, "Decryption result: " + String.join(" ",vigenereCipherModel.getDecryptedMessage(cipherStream)
-        ), "Info", JOptionPane.INFORMATION_MESSAGE);
+    public void decryptMessageAfterClick(String keyword, String cipherText){
+        try {
+            vigenereCipherModel = new VigenereCipherModel(keyword);
+            Stream<String> cipherStream = Stream.of(cipherText.split(" ")); 
+            String result = String.join(" ",vigenereCipherModel.getEncryptedMessage(cipherStream));
+            vigenereGui.showResult(result);
+            vigenereGui.addHistoryRecord(new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime()),"Decryption", cipherText , keyword,result);
+        }
+        catch(InvalidCharacterException| EmptyKey e) {
+            vigenereGui.showErrorMessage(e.getMessage());
+        }    
     }
-    
 }
     

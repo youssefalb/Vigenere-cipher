@@ -1,10 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
+      <SubComponents>
+        <Menu class="javax.swing.JMenu" name="jMenu1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="File"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="closeOption">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+C"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Close"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="closeOptionActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenu2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Help"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="manOption">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+H"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="How to use the app"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="manOptionActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+      </SubComponents>
+    </Menu>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
   <SyntheticProperties>
+    <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
@@ -64,6 +107,8 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="messageInput" alignment="0" min="-2" pref="188" max="-2" attributes="0"/>
                               <Component id="encryptionKey" min="-2" pref="188" max="-2" attributes="0"/>
+                              <Component id="jLabel3" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
+                              <Component id="jLabel4" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="266" max="32767" attributes="0"/>
@@ -73,13 +118,17 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                      <Component id="messageInput" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="messageInput" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="encryptionKey" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="encryptButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="177" max="32767" attributes="0"/>
+                      <EmptySpace pref="154" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -99,11 +148,30 @@
               <AccessibilityProperties>
                 <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
               </AccessibilityProperties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="encryptButtonActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton()"/>
                 <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="VigenereCipherFrame_encryptButton"/>
                 <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="encryptButton.setBackground(new Color(59, 89, 182));&#xa;encryptButton.setFocusPainted(false);&#xa;encryptButton.setFont(new Font(&quot;Tahoma&quot;, Font.BOLD, 12));"/>
               </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel3">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI Semibold" size="12" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Encryption key"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel4">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI Semibold" size="12" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Text to encrypt"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -126,6 +194,8 @@
                           <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                               <Component id="cipherTextInput" alignment="0" min="-2" pref="188" max="-2" attributes="0"/>
                               <Component id="decryptionKey" alignment="0" min="-2" pref="188" max="-2" attributes="0"/>
+                              <Component id="jLabel2" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
+                              <Component id="jLabel1" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="266" max="32767" attributes="0"/>
@@ -135,13 +205,17 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                      <Component id="cipherTextInput" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="cipherTextInput" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       <Component id="decryptionKey" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="decryptButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="177" max="32767" attributes="0"/>
+                      <EmptySpace pref="154" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -158,6 +232,25 @@
               <AccessibilityProperties>
                 <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="decryptBtn"/>
               </AccessibilityProperties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="decryptButtonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI Semibold" size="12" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Text to decrypt"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI Semibold" size="12" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Enter key"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -177,9 +270,9 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="472" max="-2" attributes="0"/>
-                      <EmptySpace pref="52" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="542" max="-2" attributes="0"/>
+                      <EmptySpace pref="20" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -187,7 +280,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="342" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="319" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -204,7 +297,7 @@
                 <Component class="javax.swing.JTable" name="historyTable">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new javax.swing.table.DefaultTableModel(&#xa;        null,&#xa;    new String [] {&#xa;        &quot;Operation&quot;, &quot;Text&quot;, &quot;Key&quot;, &quot;Result&quot;&#xa;    }&#xa;)" type="code"/>
+                      <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    null,&#xa;    new String [] {&#xa;        &quot;Time&quot;,&quot;Operation&quot;, &quot;Text&quot;, &quot;Key&quot;, &quot;Result&quot;&#xa;    }&#xa;)" type="code"/>
                     </Property>
                   </Properties>
                 </Component>
